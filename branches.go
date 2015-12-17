@@ -71,11 +71,11 @@ func (bs *BranchesService) ListFromRepository(slug string) ([]Branch, *http.Resp
 }
 
 // Get fetches a branch based on the provided repository slug
-// and it's id.
+// and it's name.
 //
 // Travis CI API docs: http://docs.travis-ci.com/api/#builds
-func (bs *BranchesService) Get(repoSlug string, branchId uint) (*Branch, *http.Response, error) {
-	u, err := urlWithOptions(fmt.Sprintf("/repos/%v/branches/%d", repoSlug, branchId), nil)
+func (bs *BranchesService) Get(repoSlug string, branchName string) (*Branch, *http.Response, error) {
+	u, err := urlWithOptions(fmt.Sprintf("/repos/%v/branches/%v", repoSlug, branchName), nil)
 	if err != nil {
 		return nil, nil, err
 	}
